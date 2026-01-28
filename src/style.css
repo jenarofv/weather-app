@@ -1,3 +1,18 @@
-body {
-  background-color: rebeccapurple;
+* {
+  --light-sky-color: skyblue;
+  --cloudy-color: silver;
+  --night-color: hsl(240, 55%, 13%);
 }
+
+.sunny {
+  background-color: var(--light-sky-color);
+}
+
+.cloudy {
+  background-color: var(--rainy-color);
+}
+
+.night {
+  background-color: var(--night-color);
+}
+
