@@ -20,6 +20,17 @@ class Homepage {
     this.weather = document.createElement("div");
     this.weather.classList.add("weather");
     const clearBtn = document.createElement("button");
+    this.celsiusInput = document.createElement("input");
+    this.celsiusInput.type = "checkbox";
+    this.celsiusInput.checked = true;
+    this.celsiusInput.id = "celsius";
+    const celsiusDiv = document.createElement("div");
+    const celsiusLabel = document.createElement("label");
+    celsiusLabel.innerText = "Metric Units"
+    celsiusLabel.htmlFor = "celsius";
+    celsiusDiv.appendChild(celsiusLabel);
+    celsiusDiv.appendChild(this.celsiusInput);
+    main.appendChild(celsiusDiv);
     clearBtn.classList.add("clear");
     clearBtn.innerText = "clear";
     clearBtn.addEventListener("click", () => this.clearContent());
@@ -40,6 +51,10 @@ class Homepage {
     return document.getElementById("location-field").value;
   }
 
+  get metric() {
+    return this.celsiusInput.checked;
+  }
+
   clearContent() {
     this.locationField.value = "";
     this.weather.innerHTML = "<p class=\"link-to-map\"></p>";
@@ -54,6 +69,10 @@ class Homepage {
       const icon = document.createElement("div");
       const desc = document.createElement("p");
       const dayName = document.createElement("p");
+      const temps = document.createElement("div");
+      const suntimes = document.createElement("div");
+      temps.classList.add("temps");
+      suntimes.classList.add("suntimes");
       dayName.classList.add("day-name");
       desc.classList.add("description");
       day.classList.add("day");
@@ -64,6 +83,8 @@ class Homepage {
       dayLeft.appendChild(dayName);
       dayLeft.appendChild(desc);
       day.appendChild(dayLeft);
+      day.appendChild(temps);
+      day.appendChild(suntimes);
       icon.classList.add("weather-icon");
       this.weather.appendChild(day);
     }
