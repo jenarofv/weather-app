@@ -5,23 +5,49 @@ class Homepage {
     titleContainer.id = "title";
     body.appendChild(titleContainer);
     this.title = title;
+    this.locationField = document.createElement("input");
     const main = document.createElement("main");
-    const locationField = document.createElement("input");
-    locationField.id = "location-field";
+    this.locationField.id = "location-field";
     const locationLabel = document.createElement("label");
     locationLabel.htmlFor = "location-field";
     locationLabel.innerText = "Search for a location:"
     this.btn = document.createElement("button");
     this.btn.innerText = "search";
     main.appendChild(locationLabel);
-    main.appendChild(locationField);
+    main.appendChild(this.locationField);
     main.appendChild(this.btn);
     body.appendChild(main);
     this.weather = document.createElement("div");
     this.weather.classList.add("weather");
-    const linkToMap = document.createElement("p");
-    linkToMap.classList.add("link-to-map");
-    this.weather.appendChild(linkToMap);
+    const clearBtn = document.createElement("button");
+    clearBtn.classList.add("clear");
+    clearBtn.innerText = "clear";
+    clearBtn.addEventListener("click", () => this.clearContent());
+    main.appendChild(clearBtn);
+    this.clearContent();
+    this.generateDayCards();
+  }
+
+  get title() {
+    return document.getElementById("title");
+  }
+
+  set title(newTitle) {
+    document.getElementById("title").innerText = newTitle;
+  }
+
+  get location() {
+    return document.getElementById("location-field").value;
+  }
+
+  clearContent() {
+    this.locationField.value = "";
+    this.weather.innerHTML = "<p class=\"link-to-map\"></p>";
+    this.generateDayCards();
+  }
+
+  generateDayCards() {
+    const main = document.querySelector("main");
     for (let i = 0; i < 7; i++) {
       const day = document.createElement("div");
       const dayLeft = document.createElement("div");
@@ -42,18 +68,6 @@ class Homepage {
       this.weather.appendChild(day);
     }
     main.appendChild(this.weather);
-  }
-
-  get title() {
-    return document.getElementById("title");
-  }
-
-  set title(newTitle) {
-    document.getElementById("title").innerText = newTitle;
-  }
-
-  get location() {
-    return document.getElementById("location-field").value;
   }
 
 }
