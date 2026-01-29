@@ -4,6 +4,14 @@ import Homepage from "./homepage.js";
 const homepage = new Homepage("Weather App");
 homepage.btn.addEventListener("click", () => fetchForecast(homepage.location)); 
 
+function titleCase(string) {
+  let newString = string.at(0).toLocaleUpperCase();
+  for (const letter of string.slice(1)) {
+    newString += letter;
+  }
+  return newString;
+}
+
 async function fetchForecast(location, metric=true) {
   const icons = {
     snow : "❄️",
@@ -34,6 +42,11 @@ async function fetchForecast(location, metric=true) {
       response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&key=${API}`);
     }
     const jsonData = await response.json();
+    const linkToMap = document.querySelector(`.link-to-map`);
+    const openStreeMapLink = ""
+    const locationTitleCase = titleCase(jsonData.resolvedAddress)
+    const locationLink = `https://www.openstreetmap.org/#map=13/${jsonData.latitude}/${jsonData.longitude}`
+    linkToMap.innerHTML = `view ${locationTitleCase} on <a href="${locationLink}" target="_blank">OpenStreetMap<a/>.`
     for (let i = 0; i < 7; i++){
       const day = document.getElementById(`day-${i}`)
       const icon = document.querySelector(`#day-${i} .weather-icon`)
