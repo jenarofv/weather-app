@@ -1,9 +1,15 @@
 * {
   font-family: sans-serif;
   box-sizing: border-box;
-  --light-sky-color: skyblue;
   --cloudy-color: silver;
-  --night-color: hsl(240, 55%, 13%);
+  --night-color: hsl(240, 55%, 25%);
+}
+
+body {
+  background-image: linear-gradient(skyblue, var(--night-color));
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 20px;
 }
 
 h1 {
@@ -27,8 +33,23 @@ input {
 }
 
 .day {
-  flex: 0 1 120px;
+  flex: 1 1 120px;
   padding: 5px;
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr;
+  background-color: rgb(255 255 255 / 20%);
+}
+
+.day:hover{
+  background-color: rgb(255 255 255 / 40%);
+}
+
+.hidden {
+  display: none;
+}
+
+.day-left-section {
+  grid-area: 1 / 1 / 4 / 1;
 }
 
 .nice-border {

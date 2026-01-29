@@ -24,16 +24,20 @@ class Homepage {
     this.weather.appendChild(linkToMap);
     for (let i = 0; i < 7; i++) {
       const day = document.createElement("div");
+      const dayLeft = document.createElement("div");
       const icon = document.createElement("div");
       const desc = document.createElement("p");
       const dayName = document.createElement("p");
       dayName.classList.add("day-name");
       desc.classList.add("description");
       day.classList.add("day");
+      day.classList.add("hidden");
       day.id = `day-${i}`;
-      day.appendChild(icon);
-      day.appendChild(dayName);
-      day.appendChild(desc);
+      dayLeft.classList.add("day-left-section")
+      dayLeft.appendChild(icon);
+      dayLeft.appendChild(dayName);
+      dayLeft.appendChild(desc);
+      day.appendChild(dayLeft);
       icon.classList.add("weather-icon");
       this.weather.appendChild(day);
     }

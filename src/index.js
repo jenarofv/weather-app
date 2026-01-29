@@ -49,6 +49,7 @@ async function fetchForecast(location, metric=true) {
     linkToMap.innerHTML = `view ${locationTitleCase} on <a href="${locationLink}" target="_blank">OpenStreetMap<a/>.`
     for (let i = 0; i < 7; i++){
       const day = document.getElementById(`day-${i}`)
+      day.classList.remove("hidden");
       const icon = document.querySelector(`#day-${i} .weather-icon`)
       const description = document.querySelector(`#day-${i} .description`);
       const dayName = document.querySelector(`#day-${i} .day-name`);
