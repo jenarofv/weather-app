@@ -10,7 +10,7 @@ class Homepage {
     this.locationField.id = "location-field";
     const locationLabel = document.createElement("label");
     locationLabel.htmlFor = "location-field";
-    locationLabel.innerText = "Search for a location:"
+    locationLabel.innerText = "Search for a location:";
     this.btn = document.createElement("button");
     this.btn.innerText = "search";
     main.appendChild(locationLabel);
@@ -26,7 +26,7 @@ class Homepage {
     this.celsiusInput.id = "celsius";
     const celsiusDiv = document.createElement("div");
     const celsiusLabel = document.createElement("label");
-    celsiusLabel.innerText = "Metric Units"
+    celsiusLabel.innerText = "Metric Units";
     celsiusLabel.htmlFor = "celsius";
     celsiusDiv.appendChild(celsiusLabel);
     celsiusDiv.appendChild(this.celsiusInput);
@@ -57,7 +57,7 @@ class Homepage {
 
   clearContent() {
     this.locationField.value = "";
-    this.weather.innerHTML = "<p class=\"link-to-map\"></p>";
+    this.weather.innerHTML = '<p class="link-to-map"></p>';
     this.generateDayCards();
   }
 
@@ -78,7 +78,7 @@ class Homepage {
       day.classList.add("day");
       day.classList.add("hidden");
       day.id = `day-${i}`;
-      dayLeft.classList.add("day-left-section")
+      dayLeft.classList.add("day-left-section");
       dayLeft.appendChild(icon);
       dayLeft.appendChild(dayName);
       dayLeft.appendChild(desc);
@@ -90,7 +90,6 @@ class Homepage {
     }
     main.appendChild(this.weather);
   }
-
 }
 
 export default Homepage;

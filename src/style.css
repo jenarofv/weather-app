@@ -40,11 +40,12 @@ input {
   background-color: rgb(255 255 255 / 20%);
 }
 
-.day:hover{
+.day:hover {
   background-color: rgb(255 255 255 / 40%);
 }
 
-.temps, .suntimes {
+.temps,
+.suntimes {
   text-align: center;
   padding: auto;
 }
@@ -82,4 +83,3 @@ input {
 .night {
   background-color: var(--night-color);
 }
-
